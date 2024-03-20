@@ -5,8 +5,11 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon-js.ico" />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Assurez-vous d'inclure votre propre fichier JavaScript ici -->
-    <script src="script.js" defer></script>
+    <!-- Inclusion des scripts JavaScript -->
+    <script src="js/model/RecipeModel.js" defer></script>
+    <script src="js/view/RecipeView.js" defer></script>
+    <script src="js/controller/RecipeController.js" defer></script>
+    <script src="js/main.js" defer></script>
   </head>
 
   <body>
@@ -16,63 +19,37 @@
       <p id="explication">
         Cette page permet de rechercher des recettes de cuisine via l'API publique
         d'Edamam.<br />
-        Saisir les ingrédients ou le nom d'un plat pour rechercher les recettes
-        correspondantes, et enregistrer vos recherches favorites pour les
+        Saisissez les ingrédients ou le nom d'un plat pour rechercher des recettes
+        correspondantes et enregistrez vos recherches favorites pour les
         retrouver facilement.
       </p>
     </header>
     <hr />
-
 
     <main id="conteneur">
       <!-- Section de recherche (avec résultats) -->
       <section id="section-recherche">
         <div id="bloc-recherche">
           <!-- Champ de recherche -->
-          <input type="text" placeholder="Que cherchez-vous ?" />
+          <input type="text" id="input-recherche" placeholder="Que cherchez-vous ?" />
 
           <!-- Boutons -->
-          <button
-            id="btn-lancer-recherche"
-            type="button"
-            class="btn_clicable"
-            title="Lancer la recherche"
-          >
+          <button id="btn-lancer-recherche" type="button" class="btn_clicable" title="Lancer la recherche">
             <!-- Icone Loupe (provenant de flaticon.com) -->
             <img src="images/loupe.svg" alt="Loupe pour recherche" width="22" />
           </button>
 
-          <button
-            id="btn-favoris"
-            type="button"
-            disabled
-            title="Ajouter la recherche aux favoris"
-          >
-            <!-- Icone étoile vide
-							(qui indique que la recherche ne fait pas partie des favoris) -->
+          <button id="btn-favoris" type="button" disabled title="Ajouter la recherche aux favoris">
             <img src="images/etoile-vide.svg" alt="Etoile vide" width="22" />
-
-            <!-- Icone étoile pleine
-								(qui indique que la recherche fait partie des favoris) -->
-            <!-- <img src="images/etoile-pleine.svg" alt="Etoile pleine" width="22" > -->
-
-            <!-- (Les 2 icones d'étoile provenant de flaticon.com) -->
           </button>
         </div>
 
         <!-- Résultats de recherche -->
-        <div id="bloc-gif-attente">
-          <img
-            src="images/attente-ajax.gif"
-            alt="GIF Attente de résultats"
-            width="50"
-          />
+        <div id="bloc-gif-attente" style="display: none;">
+          <img src="images/attente-ajax.gif" alt="GIF d'attente de résultats" width="50" />
         </div>
         <div id="bloc-resultats">
-          <p class="res">Résultat 1 ...</p>
-          <p class="res">Résultat 2 ...</p>
-          <p class="res">Résultat 3 ...</p>
-          <p class="info-vide">(Aucun résultat trouvé)</p>
+          <!-- Les résultats de recherche seront affichés ici par le JavaScript -->
         </div>
       </section>
 
@@ -83,38 +60,12 @@
       <section id="section-favoris">
         <h2>Recherches favorites</h2>
         <p>
-          Cliquer sur une recherche favorite ci-dessus pour relancer celle-ci :
+          Cliquez sur une recherche favorite ci-dessous pour la relancer :
         </p>
         <ul id="liste-favoris">
-          <li>
-            <span title="Cliquer pour relancer la recherche">Grenoble</span>
-            <img
-              src="images/croix.svg"
-              alt="Icone pour supprimer le favori"
-              width="15"
-              title="Cliquer pour supprimer le favori"
-            />
-          </li>
-          <li>
-            <span title="Cliquer pour relancer la recherche">Lyon</span>
-            <img
-              src="images/croix.svg"
-              alt="Icone pour supprimer le favori"
-              width="15"
-              title="Cliquer pour supprimer le favori"
-            />
-          </li>
-          <li>
-            <span title="Cliquer pour relancer la recherhe.">Web</span>
-            <img
-              src="images/croix.svg"
-              alt="Icone pour supprimer le favori"
-              width="15"
-              title="Cliquer pour supprimer le favori"
-            />
-          </li>
+          <!-- Les recherches favorites seront affichées ici par le JavaScript -->
         </ul>
-        <p class="info-vide">(Aucune recherche favorite)</p>
+        <p class="info-vide" style="display: none;">(Aucune recherche favorite)</p>
       </section>
     </main>
   </body>
