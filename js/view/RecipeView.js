@@ -1,11 +1,11 @@
 class RecipeView {
   constructor(model) {
-    this.model = model; // On garde une référence au modèle
+    this.model = model;
     this.inputRecherche = document.getElementById("input-recherche");
     this.blocResultats = document.getElementById("bloc-resultats");
-    this.listeFavoris = document.getElementById("liste-favoris"); // Ajout de l'ID de la liste des favoris
-    this.infoVide = document.querySelector(".info-vide"); // Ajout pour la gestion de l'affichage 'Aucune recherche favorite'
-    this.renderFavorites(); // Maintenant, ça fonctionne car `this.model` est défini
+    this.listeFavoris = document.getElementById("liste-favoris");
+    this.infoVide = document.querySelector(".info-vide");
+    this.renderFavorites();
   }
 
   getInputValue() {
@@ -18,10 +18,40 @@ class RecipeView {
 
   renderResults(recipes) {
     this.clearResults();
-    recipes.forEach((recipe) => {
+    recipes.forEach(recipe => {
       const paragraphe = document.createElement("p");
       paragraphe.textContent = recipe.recipe.label;
       this.blocResultats.appendChild(paragraphe);
+      paragraphe.addEventListener("click", () => this.showRecipePopup(recipe.recipe));
+    });
+  }
+
+  showRecipePopup(recipe) {
+    const popup = document.createElement("div");
+    popup.id = "recipe-popup";
+    popup.innerHTML = `
+      <div class="popup-content">
+        <div class="popup-header">
+          <img src="${recipe.image}" alt="${recipe.label}" class="popup-img">
+          <div id="youtube-video-container" class="popup-video"></div>
+        </div>
+        <h2>${recipe.label}</h2>
+        <ul class="popup-ingredients">${recipe.ingredientLines.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
+        ${recipe.url ? `<a href="${recipe.url}" target="_blank" class="see-more-btn">Voir plus</a>` : ''}
+        <button id="close-popup" class="close-popup-btn">Fermer</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+
+    this.model.fetchYouTubeVideo(recipe.label, videoUrl => {
+      if (videoUrl) {
+        const videoContainer = document.getElementById('youtube-video-container');
+        videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      }
+    });
+
+    document.getElementById("close-popup").addEventListener("click", () => {
+      document.body.removeChild(popup);
     });
   }
 
@@ -35,11 +65,11 @@ class RecipeView {
   }
 
   toggleFavoriteStar(isFavorite) {
-    const starImg = document.getElementById('btn-favoris').querySelector('img');
+    const starImg = document.getElementById("btn-favoris").querySelector("img");
     if (isFavorite) {
-      starImg.src = 'images/etoile-pleine.svg'; // Chemin de votre étoile jaune
+      starImg.src = "images/etoile-pleine.svg"; // Chemin de votre étoile jaune
     } else {
-      starImg.src = 'images/etoile-vide.svg';
+      starImg.src = "images/etoile-vide.svg";
     }
   }
   renderFavorites() {
@@ -55,7 +85,6 @@ class RecipeView {
         this.inputRecherche.value = fav; // Définissez l'entrée de recherche sur le favori
         this.controller.onSearch(); // Déclenchez une nouvelle recherche
       });
-      
     });
     const currentQuery = this.getInputValue();
     this.toggleFavoriteStar(favorites.includes(currentQuery));

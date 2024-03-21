@@ -151,6 +151,70 @@ h1 {
   color: var(--main-green);
 }
 
+#recipe-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001; /* Assurez-vous que la popup est bien au-dessus des autres éléments */
+  border: 2px solid var(--main-green); /* Délimitation visuelle */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--background); /* Adaptation du fond */
+  color: var(--text-color); /* Adaptation de la couleur du texte */
+  width: 80%;
+  max-width: 640px; /* Ajustez selon les besoins pour une forme plus rectangulaire */
+  overflow-y: auto; /* Permet le défilement si nécessaire */
+  max-height: 80vh; /* Adaptation à la hauteur de la fenêtre */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrage du contenu */
+  padding: 20px;
+}
+
+#close-popup {
+  align-self: flex-end; /* Positionnement en haut à droite */
+  margin-bottom: 20px; /* Espacement du contenu en dessous */
+}
+
+.popup-header {
+  display: flex;
+  width: 100%; /* Utilisation de toute la largeur de la popup */
+  justify-content: space-between; /* Espacement entre l'image et la vidéo */
+  margin-bottom: 20px; /* Espacement avec le contenu en dessous */
+}
+
+.popup-img, .popup-video iframe {
+  width: 48%; /* Ajustement pour que l'image et la vidéo aient la même largeur */
+  aspect-ratio: 16 / 9; /* Garantie d'un ratio d'aspect 16:9 pour la vidéo */
+}
+
+.popup-content {
+  width: 100%; /* Utilisation de toute la largeur pour le contenu */
+}
+
+.popup-ingredients {
+  text-align: left; /* Alignement du texte à gauche pour les ingrédients */
+  width: 100%; /* Utilisation de toute la largeur disponible */
+}
+
+.see-more-btn {
+  margin-top: 20px; /* Espacement avec le contenu au-dessus */
+}
+
+/* Réajustement pour les petits écrans */
+@media (max-width: 600px) {
+  .popup-header {
+    flex-direction: column; /* Disposition verticale pour l'image et la vidéo sur petits écrans */
+  }
+
+  .popup-img, .popup-video iframe {
+    width: 100%; /* Utilisation de toute la largeur pour petits écrans */
+    margin-bottom: 20px; /* Espacement entre l'image, la vidéo et le reste du contenu */
+  }
+}
+
+
 /* Media-query pour gérer l'affichage sur petit écran */
 @media (max-width: 900px) {
   #conteneur {

@@ -21,6 +21,24 @@ class RecipeModel {
         console.error("Erreur lors de la recherche de recettes:", error);
       });
   }
+
+  fetchYouTubeVideo(query, callback) {
+    const API_KEY = 'AIzaSyAFN7YchzHu3TrAGBm6pTConI9BlhNTkZA';
+    const youtubeSearchURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}+recette&maxResults=1&key=${API_KEY}&relevanceLanguage=fr`;
+  
+    fetch(youtubeSearchURL)
+      .then(response => response.json())
+      .then(data => {
+        if (data.items && data.items.length > 0) {
+          const videoId = data.items[0].id.videoId;
+          callback(`https://www.youtube.com/embed/${videoId}`);
+        } else {
+          callback('');
+        }
+      })
+      .catch(error => console.error('Erreur lors de la recherche YouTube:', error));
+  }
+  
   addFavoriteToSession(query) {
     let favorites = this.getFavoritesFromSession();
     if (!favorites.includes(query)) {
