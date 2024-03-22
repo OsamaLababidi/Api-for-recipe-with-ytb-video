@@ -35,9 +35,9 @@ class RecipeView {
           <img src="${recipe.image}" alt="${recipe.label}" class="popup-img">
           <div id="youtube-video-container" class="popup-video"></div>
         </div>
-        <h2>${recipe.label}</h2>
+        <h2 class="title-recette">${recipe.label}</h2>
         <ul class="popup-ingredients">${recipe.ingredientLines.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
-        ${recipe.url ? `<a href="${recipe.url}" target="_blank" class="see-more-btn">Voir plus</a>` : ''}
+        ${recipe.url ? `<button class="see-more-btn"><a href="${recipe.url}" target="_blank">Voir plus</a> </button> ` : ''}
         <button id="close-popup" class="close-popup-btn">Fermer</button>
       </div>
     `;

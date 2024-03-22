@@ -49,7 +49,7 @@ class RecipeModel {
 
   getFavoritesFromSession() {
     const favorites = sessionStorage.getItem('favorites');
-    return favorites ? JSON.parse(favorites) : []; // Assurez-vous de retourner un tableau vide si 'favorites' est null
+    return favorites ? JSON.parse(favorites) : []; //retourne un tableau vide si 'favorites' est null
   }
   
   isFavorite(query) {
