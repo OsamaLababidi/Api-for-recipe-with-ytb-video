@@ -47,6 +47,14 @@ class RecipeModel {
     }
   }
 
+  removeFavoriteFromSession(query) {
+    let favorites = this.getFavoritesFromSession();
+    const index = favorites.indexOf(query);
+    if (index !== -1) {
+      favorites.splice(index, 1);
+      sessionStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+  }
   getFavoritesFromSession() {
     const favorites = sessionStorage.getItem('favorites');
     return favorites ? JSON.parse(favorites) : []; //retourne un tableau vide si 'favorites' est null

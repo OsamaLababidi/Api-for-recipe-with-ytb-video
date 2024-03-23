@@ -15,6 +15,7 @@ class RecipeView {
   clearResults() {
     this.blocResultats.innerHTML = "";
   }
+  
 
   renderResults(recipes) {
     this.clearResults();
