@@ -11,7 +11,7 @@ class RecipeController {
   setupEventListeners() {
     const searchBtn = document.getElementById("btn-lancer-recherche");
     searchBtn.addEventListener("click", () => this.onSearch());
-    const filterBtn = document.querySelector('.filter');
+    const filterBtn = document.getElementById("filter");
     filterBtn.addEventListener('click', () => this.view.toggleRecipePanel());
     const favBtn = document.getElementById("btn-favoris");
     favBtn.addEventListener("click", () => this.addFavorite());
@@ -21,14 +21,12 @@ class RecipeController {
     toggleRechercheDynamique.addEventListener("change", () => {
       // Mettez à jour la recherche dynamique basée sur l'état du commutateur
       this.rechercheDynamiqueActive = toggleRechercheDynamique.checked;
-      // Facultatif : ajoutez toute logique supplémentaire nécessaire lors de l'activation/désactivation
     });
 
     const inputSearch = document.getElementById("input-recherche");
     inputSearch.addEventListener("input", () => this.handleInput());
   }
 
-  // Factorisez la logique de manipulation des entrées pour réutilisation
   handleInput() {
     const query = this.view.getInputValue();
     this.toggleFavoriteButtonState(query);
@@ -52,25 +50,19 @@ class RecipeController {
     }
   }
   
-async addFavorite() {
+  async addFavorite() {
     const query = this.view.getInputValue();
     if (query.length >= 3) {
-        // Toggle favorite state instead of explicitly adding
         this.model.toggleFavoriteInSession(query);
-        // Since the favorites list could have changed, re-render it
         this.view.renderFavorites(this.model.getFavoritesFromSession());
-        // Optionally, update the star status based on the new state
         const isFavoriteNow = this.model.isFavorite(query);
         this.view.toggleFavoriteStar(isFavoriteNow);
     }
-}
-
-  
+  }
 
   toggleFavoriteButtonState(query) {
     const favBtn = document.getElementById("btn-favoris");
     favBtn.disabled = query.length < 3;
-    // Update the star icon based on whether the current query is a favorite
     this.view.toggleFavoriteStar(this.model.isFavorite(query));
   }
 }

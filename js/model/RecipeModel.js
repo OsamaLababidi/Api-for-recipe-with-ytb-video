@@ -21,7 +21,7 @@ class RecipeModel {
   }
 
  async fetchYouTubeVideo(query) {
-    const API_KEY = "AIzaSyAFN7YchzHu3TrAGBm6pTConI9BlhNTkZA";
+    const API_KEY = "AIzaSyAvTBCZDYKDljPbdYUPPM4Uky7S95zpIFg";
     const youtubeSearchURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}+recipe&maxResults=1&key=${API_KEY}&relevanceLanguage=fr`;
     try {
       const response = await fetch(youtubeSearchURL);

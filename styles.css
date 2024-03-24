@@ -53,12 +53,13 @@ header {
   margin-bottom: 20px;
   color: var(--text-color);
 }
-#title{
+
+#title {
   font-size: 2em;
   margin-bottom: 20px;
   color: var(--text-color);
-
 }
+
 #conteneur {
   display: flex;
   justify-content: space-around;
@@ -87,62 +88,86 @@ header {
   margin-bottom: 20px;
 }
 
-#bloc-recherche > input[type="text"] {
+#input-recherche {
   flex: 1;
   margin-right: 10px;
 }
-#bloc-recherche-dynamique{
-  margin: 10px;
-  padding: 20px;
-}
 
-button {
-  background-color: var(--main-green);
-  color: #fff;
+#btn-lancer-recherche, #btn-favoris, #filter {
+  background-color: var(--background-button);
+  color: var(--text-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
   padding: 10px 15px;
-  width: 100px;
 }
-
-button:hover {
+#filter svg{
+  fill: var(--text-color);
+}
+#filter{
+  margin-left: 10px;
+  width: 50px;
+}
+#btn-lancer-recherche:hover, #btn-favoris:hover, #filter:hover {
   background-color: var(--active-green);
 }
+/* Styles de base pour le panneau de recettes */
+#recipe-panel {
+  background-color: #f8f9fa; /* Un arrière-plan plus clair */
+  border-right: 2px solid #dee2e6; /* Ajoute une bordure pour le séparer du contenu */
+  padding: 20px; /* Ajoute un peu d'espace autour du contenu intérieur */
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1); /* Ajoute une ombre douce pour un effet de profondeur */
+}
+
+#recipe-panel p {
+  margin: 10px 0; /* Espacement entre les éléments */
+  padding: 10px; /* Espacement intérieur */
+  border-radius: 5px; /* Bords arrondis pour les éléments */
+  transition: background-color 0.3s, transform 0.3s; /* Transition douce pour les changements de fond et de transform */
+}
+
+/* Styles pour le survol des éléments */
+#recipe-panel p:hover {
+  background-color: #e9ecef; /* Change l'arrière-plan lors du survol */
+  transform: translateX(10px); /* Déplace légèrement l'élément vers la droite */
+  cursor: pointer; /* Change le curseur pour indiquer que l'élément est cliquable */
+}
+
+/* Styles pour le bouton de fermeture et autres éléments interactifs */
+.close-popup-btn {
+  cursor: pointer; /* Indique que le bouton est cliquable */
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: #495057; /* Couleur plus douce pour le texte */
+}
+
+.close-popup-btn:hover {
+  color: #000; /* Assombrir le texte au survol */
+}
+
+.bookmark-icon {
+  transition: transform 0.2s; /* Animation rapide pour l'icône */
+}
+
+.bookmark-icon:hover {
+  transform: scale(1.1); /* Agrandit l'icône au survol */
+}
+
+/* Ajout de styles pour l'image et la vidéo pour s'assurer qu'ils sont bien présentés */
+.popup-img, #youtube-video-container iframe {
+  max-width: 100%; /* S'assure que l'image/la vidéo ne dépasse pas le conteneur */
+  border-radius: 5px; /* Bords arrondis pour l'image/la vidéo */
+}
+
 
 #bloc-resultats, #liste-favoris {
   background: #fff; /* Fond blanc pour les résultats */
   border-radius: 4px;
   padding: 10px;
 }
-.filter {
-  width: 50px;
-  height: 50px;
-  background-color: var(--background-button);
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  color: var(--text-color);
-  border-radius: 4px;
-  padding: 10px 15px;
-  margin-left: 10px; 
-}
 
-.filter svg {
-  height: 16px;
-  fill: white;
-  transition: all 0.3s;
-}
-.filter:hover {
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
-  background-color: rgb(59, 59, 59);
-}
-
-
-#bloc-resultats p{
+#bloc-resultats p {
   background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir pour le texte */
   border-radius: 8px; /* Bords arrondis pour un look moderne */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre subtile pour un effet de profondeur */
@@ -221,17 +246,19 @@ button:hover {
   padding: 20px;
 }
 
-#close-popup {
+.close-popup-btn{
   margin-bottom: 20px; /* Espacement du contenu en dessous */
   width: 100px;
+  border: none;
   background-color: var(--background-button);
   transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition for smooth animation */
 }
 
-#close-popup:hover {
+.close-popup-btn:hover {
   transform: scale(1.1); /* Increase the size slightly when hovered */
   background-color: white; /* Change background color on hover */
   color: black; /* Change text color on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 /* Positionnement fixe en haut de la page */
@@ -242,30 +269,30 @@ button:hover {
   z-index: 100; /* Assurez-vous qu'il reste au-dessus des autres éléments */
 }
 
-.toggle-wrapper{
+#toggle-wrapper{
   padding-top: 10px;
 }
-.toggle-label{
+#toggle-label{
   padding-left: 30px;
   color: var(--text-color);
 }
-.checkbox-wrapper-51 {
+#checkbox-wrapper-51 {
   display: flex;
   align-items: center;
 }
 
-.checkbox-wrapper-51 input[type="checkbox"] {
+#checkbox-wrapper-51 input[type="checkbox"] {
   visibility: hidden;
   position: absolute;
 }
 
-.checkbox-wrapper-51 .toggle-wrapper {
+#checkbox-wrapper-51 #toggle-wrapper {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
 }
 
-.checkbox-wrapper-51 .toggle {
+#checkbox-wrapper-51 #toggle {
   position: relative;
   width: 42px;
   height: 24px;
@@ -274,7 +301,7 @@ button:hover {
   transition: background 0.2s ease;
 }
 
-.checkbox-wrapper-51 .toggle span {
+#checkbox-wrapper-51 #toggle span {
   position: absolute;
   top: 1px;
   left: 1px;
@@ -286,11 +313,11 @@ button:hover {
   transition: transform 0.2s ease;
 }
 
-.checkbox-wrapper-51 input[type="checkbox"]:checked + .toggle-wrapper .toggle {
+#checkbox-wrapper-51 input[type="checkbox"]:checked + #toggle-wrapper #toggle {
   background: #1175c7;
 }
 
-.checkbox-wrapper-51 input[type="checkbox"]:checked + .toggle-wrapper .toggle span {
+#checkbox-wrapper-51 input[type="checkbox"]:checked + #toggle-wrapper #toggle span {
   transform: translateX(18px);
 }
 
@@ -337,10 +364,6 @@ button:hover {
   height: auto;
 }
 
-.see-more-btn a{
-  text-decoration: none;
-  color: var(--text-color);
-}
 
 
 /* Note that you only needs to edit the config to customize the button! */
@@ -402,7 +425,7 @@ button:hover {
   transform: rotate(180deg);
 }
 
-.plusButton:focus-visible>.plusIcon {
+#plusButton:focus-visible>#plusIcon {
   fill: black;
   transform: rotate(180deg);
 }
