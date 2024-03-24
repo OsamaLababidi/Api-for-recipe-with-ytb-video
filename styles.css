@@ -4,7 +4,7 @@
 /* Définition des principales couleurs */
 :root {
   --text-color: #fafafa; /* (Texte presque blanc) */
-  --background: #3c3c3c; /* (Fond bleu foncé) */
+  --background: #4C4C4C; /* (Fond bleu foncé) */
   --background-button: #bebebe;
   --main-green: rgb(26, 188, 156);
   --active-green: rgb(20, 156, 128);
@@ -22,6 +22,25 @@ body {
   padding: 0;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 header {
   background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir pour le texte */
   color: #fff;
@@ -30,7 +49,7 @@ header {
 }
 
 #explication {
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-bottom: 20px;
   color: var(--text-color);
 }
@@ -76,6 +95,7 @@ header {
   margin: 10px;
   padding: 20px;
 }
+
 button {
   background-color: var(--main-green);
   color: #fff;
@@ -95,12 +115,56 @@ button:hover {
   border-radius: 4px;
   padding: 10px;
 }
+.filter {
+  width: 50px;
+  height: 50px;
+  background-color: var(--background-button);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-left: 10px; 
+}
+
+.filter svg {
+  height: 16px;
+  fill: white;
+  transition: all 0.3s;
+}
+.filter:hover {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
+  background-color: rgb(59, 59, 59);
+}
+
 
 #bloc-resultats p{
-  padding-top: 10px;
-  margin: 0;
-  margin-top: 5px;
-  cursor: pointer;
+  background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir pour le texte */
+  border-radius: 8px; /* Bords arrondis pour un look moderne */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre subtile pour un effet de profondeur */
+  margin-bottom: 16px; /* Espacement entre chaque résultat */
+  padding: 12px; /* Espacement à l'intérieur de chaque résultat */
+  color: var(--text-color);
+  transition: transform 0.2s, box-shadow 0.2s; /* Animation subtile pour hover */
+}
+
+#bloc-resultats p:hover {
+  transform: translateY(-2px); /* Léger déplacement vers le haut au survol */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Ombre plus prononcée pour l'effet au survol */
+}
+
+#bloc-resultats h3 {
+  color: var(--main-green); /* Titre de la recette en vert */
+  margin-top: 0;
+}
+
+#bloc-resultats .recipe-description {
+  font-size: 0.9rem; /* Taille de police plus petite pour la description */
+  color: var(--text-color); /* Couleur de texte général pour la description */
 }
 
 #liste-favoris li {
@@ -160,6 +224,74 @@ button:hover {
 #close-popup {
   margin-bottom: 20px; /* Espacement du contenu en dessous */
   width: 100px;
+  background-color: var(--background-button);
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition for smooth animation */
+}
+
+#close-popup:hover {
+  transform: scale(1.1); /* Increase the size slightly when hovered */
+  background-color: white; /* Change background color on hover */
+  color: black; /* Change text color on hover */
+}
+
+/* Positionnement fixe en haut de la page */
+#bloc-recherche-dynamique {
+  position: fixed;
+  top: 20px; /* Ajustez la position verticale */
+  left: 20px; /* Ajustez la position horizontale */
+  z-index: 100; /* Assurez-vous qu'il reste au-dessus des autres éléments */
+}
+
+.toggle-wrapper{
+  padding-top: 10px;
+}
+.toggle-label{
+  padding-left: 30px;
+  color: var(--text-color);
+}
+.checkbox-wrapper-51 {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrapper-51 input[type="checkbox"] {
+  visibility: hidden;
+  position: absolute;
+}
+
+.checkbox-wrapper-51 .toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-wrapper-51 .toggle {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  background: #c8ccd4;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.checkbox-wrapper-51 .toggle span {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(154,153,153,0.75);
+  transition: transform 0.2s ease;
+}
+
+.checkbox-wrapper-51 input[type="checkbox"]:checked + .toggle-wrapper .toggle {
+  background: #1175c7;
+}
+
+.checkbox-wrapper-51 input[type="checkbox"]:checked + .toggle-wrapper .toggle span {
+  transform: translateX(18px);
 }
 
 .popup-header {
@@ -172,12 +304,15 @@ button:hover {
 .popup-img, .popup-video iframe {
   width: 48%;
   aspect-ratio: 16 / 9; 
-  
+
 }
 
 .popup-content {
   width: 100%; /* Utilisation de toute la largeur pour le contenu */
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This aligns items horizontally in the case of column flex-direction */
+  justify-content: center; /* This centers the children vertically */
 }
 
 .popup-ingredients {
@@ -207,6 +342,70 @@ button:hover {
   color: var(--text-color);
 }
 
+
+/* Note that you only needs to edit the config to customize the button! */
+
+.plusButton { 
+  /* Config start */
+  --plus_sideLength: 2.5rem;
+  --plus_topRightTriangleSideLength: 0.9rem;
+  /* Config end */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  width: var(--plus_sideLength);
+  height: var(--plus_sideLength);
+  background-color: var(--background-button);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.plusButton::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.plusButton:hover {
+  cursor: pointer;
+}
+
+.plusButton:hover::before {
+  --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton:focus-visible::before {
+  --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton>.plusIcon {
+  fill: white;
+  width: calc(var(--plus_sideLength) * 0.7);
+  height: calc(var(--plus_sideLength) * 0.7);
+  z-index: 1;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+}
+
+.plusButton:hover>.plusIcon {
+  fill: black;
+  transform: rotate(180deg);
+}
+
+.plusButton:focus-visible>.plusIcon {
+  fill: black;
+  transform: rotate(180deg);
+}
 /* Réajustement pour les petits écrans */
 @media (max-width: 600px) {
   .popup-header {

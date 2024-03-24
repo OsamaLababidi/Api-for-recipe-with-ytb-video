@@ -5,11 +5,6 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon-js.ico" />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Inclusion des scripts JavaScript -->
-    <script src="js/model/RecipeModel.js" defer></script>
-    <script src="js/view/RecipeView.js" defer></script>
-    <script src="js/controller/RecipeController.js" defer></script>
-    <script src="js/main.js" defer></script>
   </head>
 
   <body>
@@ -23,16 +18,22 @@
         correspondantes et enregistrez vos recherches favorites pour les
         retrouver facilement.
       </p>
+      <div class="checkbox-wrapper-51">
+        <input id="cbx-51" type="checkbox">
+        <label for="cbx-51" class="toggle-wrapper">
+          <div class="toggle">
+            <span>
+              <svg viewBox="0 0 10 10" height="10px" width="10px">
+                <path d="M5,1 L5,1 C2.790861,1 1,2.790861 1,5 L1,5 C1,7.209139 2.790861,9 5,9 L5,9 C7.209139,9 9,7.209139 9,5 L9,5 C9,2.790861 7.209139,1 5,1 L5,9 L5,1 Z"></path>
+              </svg>
+            </span>
+          </div>
+          <span class="toggle-label">Recherche dynamique</span>
+        </label>
+      </div>
     </header>
 
     <main id="conteneur">
-      <div id="bloc-recherche-dynamique">
-        <label>
-          <input type="checkbox" id="toggle-recherche-dynamique" checked>
-          Recherche dynamique activée
-        </label>
-      </div>
-
       <!-- Section de recherche (avec résultats) -->
       <section id="section-recherche">
         <div id="bloc-recherche">
@@ -48,6 +49,13 @@
           <button id="btn-favoris" type="button" disabled title="Ajouter la recherche aux favoris">
             <img src="images/etoile-vide.svg" alt="Etoile vide" width="22" />
           </button>
+          <button title="filter" class="filter">
+            <svg viewBox="0 0 512 512" height="1em">
+              <path
+                d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"
+              ></path>
+            </svg>
+          </button>          
         </div>
 
         <!-- Résultats de recherche -->
@@ -75,4 +83,9 @@
       </section>
     </main>
   </body>
+    <!-- Inclusion des scripts JavaScript -->
+    <script src="js/model/RecipeModel.js" defer></script>
+    <script src="js/view/RecipeView.js" defer></script>
+    <script src="js/controller/RecipeController.js" defer></script>
+    <script src="js/main.js" defer></script>
 </html>
