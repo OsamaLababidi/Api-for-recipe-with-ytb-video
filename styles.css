@@ -164,13 +164,13 @@ header {
 }
 
 
-#bloc-resultats, #liste-favorite {
+#block-results, #list-favorite {
   background: #fff; /* Fond blanc pour les résultats */
   border-radius: 4px;
   padding: 10px;
 }
 
-#bloc-resultats p {
+#block-results p {
   background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir pour le texte */
   border-radius: 8px; /* Bords arrondis pour un look moderne */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre subtile pour un effet de profondeur */
@@ -180,27 +180,27 @@ header {
   transition: transform 0.2s, box-shadow 0.2s; /* Animation subtile pour hover */
 }
 
-#bloc-resultats p:hover {
+#block-results p:hover {
   transform: translateY(-2px); /* Léger déplacement vers le haut au survol */
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Ombre plus prononcée pour l'effet au survol */
 }
 
-#bloc-resultats h3 {
+#block-results h3 {
   color: var(--main-green); /* Titre de la recette en vert */
   margin-top: 0;
 }
 
-#bloc-resultats .recipe-description {
+#block-results .recipe-description {
   font-size: 0.9rem; /* Taille de police plus petite pour la description */
   color: var(--text-color); /* Couleur de texte général pour la description */
 }
 
-#liste-favorite li {
+#list-favorite li {
   cursor: pointer;
   margin: 5px 0;
 }
  
-#liste-favorite li:hover {
+#list-favorite li:hover {
   color: var(--main-green);
 }
 
