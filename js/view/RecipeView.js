@@ -1,9 +1,9 @@
 class RecipeView {
   constructor(model) {
     this.model = model;
-    this.inputRecherche = document.getElementById("input-recherche");
+    this.inputRecherche = document.getElementById("search-input");
     this.blocResultats = document.getElementById("bloc-resultats");
-    this.listeFavoris = document.getElementById("liste-favoris");
+    this.listeFavoris = document.getElementById("liste-favorite");
     this.infoVide = document.getElementById("info-vide"); // Make sure this also has an ID in your HTML.
     this.initRecipePanel();
     this.renderFavorites();
@@ -119,7 +119,7 @@ class RecipeView {
   }
 
   toggleFavoriteStar(isFavorite) {
-    const starImg = document.getElementById("btn-favoris").querySelector("img");
+    const starImg = document.getElementById("favorites-button").querySelector("img");
     starImg.src = isFavorite
       ? "images/etoile-pleine.svg"
       : "images/etoile-vide.svg";
@@ -129,7 +129,7 @@ class RecipeView {
     const query = this.getInputValue();
     const isFavorite = this.model.isFavorite(query);
     this.toggleFavoriteStar(isFavorite);
-    const favBtn = document.getElementById("btn-favoris");
+    const favBtn = document.getElementById("favorites-button");
     favBtn.disabled = query.length < 3;
   }
 

@@ -9,9 +9,9 @@
 
   <body>
     <header>
-      <h1 id="title">Recherche de Recettes de Cuisine</h1>
+      <h1 id="header-title">Recherche de Recettes de Cuisine</h1>
 
-      <p id="explication">
+      <p id="description">
         Cette page permet de rechercher des recettes de cuisine via l'API
         publique d'Edamam.<br />
         Saisissez les ingrédients ou le nom d'un plat pour rechercher des
@@ -35,20 +35,20 @@
       </div>
     </header>
 
-    <main id="conteneur">
+    <main id="container">
       <!-- Section de recherche (avec résultats) -->
-      <section id="section-recherche">
-        <div id="bloc-recherche">
+      <section id="search-section">
+        <div id="search-block">
           <!-- Champ de recherche -->
           <input
             type="text"
-            id="input-recherche"
+            id="search-input"
             placeholder="Que cherchez-vous ?"
           />
 
           <!-- Boutons -->
           <button
-            id="btn-lancer-recherche"
+            id="search-button"
             type="button"
             title="Lancer la recherche"
           >
@@ -57,7 +57,7 @@
           </button>
 
           <button
-            id="btn-favoris"
+            id="favorites-button"
             type="button"
             disabled
             title="Ajouter la recherche aux favoris"
@@ -88,13 +88,13 @@
       </section>
 
       <!-- Section de séparation (avec la bordure verte) -->
-      <section id="section-separation"></section>
+      <section id="section-separator"></section>
 
       <!-- Section des recherches favorites -->
-      <section id="section-favoris">
-        <h2 id="titre_favoris">Recherches favorites</h2>
+      <section id="section-favorites">
+        <h2 id="title-favorite">Recherches favorites</h2>
         <p>Cliquez sur une recherche favorite ci-dessous pour la relancer :</p>
-        <ul id="liste-favoris">
+        <ul id="liste-favorite">
           <!-- Les recherches favorites seront affichées ici par le JavaScript -->
         </ul>
         <p id="info-vide" style="display: none">

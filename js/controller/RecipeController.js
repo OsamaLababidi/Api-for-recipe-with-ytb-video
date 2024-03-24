@@ -9,11 +9,11 @@ class RecipeController {
   }
 
   setupEventListeners() {
-    const searchBtn = document.getElementById("btn-lancer-recherche");
+    const searchBtn = document.getElementById("search-button");
     searchBtn.addEventListener("click", () => this.onSearch());
     const filterBtn = document.getElementById("filter");
     filterBtn.addEventListener('click', () => this.view.toggleRecipePanel());
-    const favBtn = document.getElementById("btn-favoris");
+    const favBtn = document.getElementById("favorites-button");
     favBtn.addEventListener("click", () => this.addFavorite());
 
     // Écoutez les changements sur le commutateur au lieu de la checkbox directement
@@ -23,7 +23,7 @@ class RecipeController {
       this.rechercheDynamiqueActive = toggleRechercheDynamique.checked;
     });
 
-    const inputSearch = document.getElementById("input-recherche");
+    const inputSearch = document.getElementById("search-input");
     inputSearch.addEventListener("input", () => this.handleInput());
   }
 
@@ -61,7 +61,7 @@ class RecipeController {
   }
 
   toggleFavoriteButtonState(query) {
-    const favBtn = document.getElementById("btn-favoris");
+    const favBtn = document.getElementById("favorites-button");
     favBtn.disabled = query.length < 3;
     this.view.toggleFavoriteStar(this.model.isFavorite(query));
   }

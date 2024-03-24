@@ -48,52 +48,55 @@ header {
   text-align: center;
 }
 
-#explication {
+#description {
   font-size: 1.1em;
   margin-bottom: 20px;
   color: var(--text-color);
 }
 
-#title {
+#header-title {
   font-size: 2em;
   margin-bottom: 20px;
   color: var(--text-color);
 }
 
-#conteneur {
+#container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Espacement entre les sections */
   flex-wrap: wrap;
   padding: 20px;
 }
 
-#section-recherche, #section-favoris {
+#search-section {
+  flex: 70%; /* Prend 70% de l'espace disponible */
+  margin-right: 2%; /* Petit espace entre les sections */
+}
+#search-block, #section-favorites {
   background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent blanc pour les sections */
   margin: 10px;
   padding: 20px;
   border-radius: 8px;
+  width: 100%;
 }
 
-#section-recherche {
+
+#section-favorites {
+  flex-grow: 1;
+  width: 300px;
+}
+
+#search-block{
+  display: flex;
+  margin-bottom: 20px;
   flex-grow: 2;
 }
 
-#section-favoris {
-  flex-grow: 1;
-  width: 200px;
-}
-
-#bloc-recherche {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-#input-recherche {
+#search-input{
   flex: 1;
   margin-right: 10px;
 }
 
-#btn-lancer-recherche, #btn-favoris, #filter {
+#search-button, #favorites-button, #filter {
   background-color: var(--background-button);
   color: var(--text-color);
   border: none;
@@ -108,7 +111,7 @@ header {
   margin-left: 10px;
   width: 50px;
 }
-#btn-lancer-recherche:hover, #btn-favoris:hover, #filter:hover {
+#search-button:hover, #favorites-button:hover, #filter:hover {
   background-color: var(--active-green);
 }
 /* Styles de base pour le panneau de recettes */
@@ -156,12 +159,12 @@ header {
 
 /* Ajout de styles pour l'image et la vidéo pour s'assurer qu'ils sont bien présentés */
 .popup-img, #youtube-video-container iframe {
-  max-width: 100%; /* S'assure que l'image/la vidéo ne dépasse pas le conteneur */
+  max-width: 100%; /* S'assure que l'image/la vidéo ne dépasse pas le container */
   border-radius: 5px; /* Bords arrondis pour l'image/la vidéo */
 }
 
 
-#bloc-resultats, #liste-favoris {
+#bloc-resultats, #liste-favorite {
   background: #fff; /* Fond blanc pour les résultats */
   border-radius: 4px;
   padding: 10px;
@@ -192,20 +195,20 @@ header {
   color: var(--text-color); /* Couleur de texte général pour la description */
 }
 
-#liste-favoris li {
+#liste-favorite li {
   cursor: pointer;
   margin: 5px 0;
 }
  
-#liste-favoris li:hover {
+#liste-favorite li:hover {
   color: var(--main-green);
 }
 
-#titre_favoris{
+#title_favorite{
   margin-top: 0;
 }
 
-#btn-lancer-recherche{
+#search-button{
   background-color: var(--background-button);
   color: var(--text-color);
   border: none;
@@ -216,7 +219,7 @@ header {
 
 }
 
-#btn-favoris{
+#favorites-button{
   background-color: var(--background-button);
   color: var(--text-color);
   border: none;
@@ -245,10 +248,30 @@ header {
   align-items: center;
   padding: 20px;
 }
+#recipe-popup::-webkit-scrollbar {
+  border-radius: 0 5px;
+  width: 10px;
+}
+
+/* Track */
+#recipe-popup::-webkit-scrollbar-track {
+  border-radius: 0 5px;
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+#recipe-popup::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+#recipe-popup::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
 .close-popup-btn{
   margin-bottom: 20px; /* Espacement du contenu en dessous */
-  width: 100px;
+  width: 50px;
   border: none;
   background-color: var(--background-button);
   transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition for smooth animation */
@@ -444,16 +467,16 @@ header {
 
 /* Media-query pour gérer l'affichage sur petit écran */
 @media (max-width: 900px) {
-  #conteneur {
+  #container {
     flex-direction: column-reverse;
   }
 
-  #section-separation {
+  #section-separator {
     border-top: 2px dashed var(--main-green);
     margin: 0 -10px 40px -10px;
   }
 
-  #section-favoris {
+  #section-favorites {
     flex: 0;
   }
 }
