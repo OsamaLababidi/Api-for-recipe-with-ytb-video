@@ -17,7 +17,7 @@ class RecipeView {
 
   //Clears the search results display area, preparing it for new results.
   clearResults() {
-    this.blocResultats.innerHTML = "";
+    this.blocResults.innerHTML = "";
   }
 
   //Displays search results. Each result can be clicked to show more details.
@@ -26,7 +26,7 @@ class RecipeView {
     recipes.forEach((recipe) => {
       const paragraphe = document.createElement("p");
       paragraphe.textContent = recipe.recipe.label;
-      this.blocResultats.appendChild(paragraphe);
+      this.blocResults.appendChild(paragraphe);
       // Adds click listener to each result for displaying detailed popup.
       paragraphe.addEventListener("click", () =>
         this.showRecipePopup(recipe.recipe)

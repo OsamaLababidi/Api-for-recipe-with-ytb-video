@@ -3,41 +3,35 @@ class RecipeController {
     this.model = model;
     this.view = view;
     this.setupEventListeners();
-    // Initialisez la recherche dynamique basée sur l'état initial du commutateur
-    this.rechercheDynamiqueActive = document.getElementById('cbx-51').checked;
+    this.dynamiqueSeach = document.getElementById('cbx-51').checked;
     this.view.renderFavorites(this.model.getFavoritesFromSession());
   }
 
+  // Sets up event listeners for UI elements (search, filter, favorites, and dynamic search toggle).
   setupEventListeners() {
-    const searchBtn = document.getElementById("search-button");
-    searchBtn.addEventListener("click", () => this.onSearch());
-    const filterBtn = document.getElementById("filter");
-    filterBtn.addEventListener('click', () => this.view.toggleRecipePanel());
-    const favBtn = document.getElementById("favorites-button");
-    favBtn.addEventListener("click", () => this.addFavorite());
-
-    // Écoutez les changements sur le commutateur au lieu de la checkbox directement
-    const toggleRechercheDynamique = document.getElementById("cbx-51");
-    toggleRechercheDynamique.addEventListener("change", () => {
-      // Mettez à jour la recherche dynamique basée sur l'état du commutateur
-      this.rechercheDynamiqueActive = toggleRechercheDynamique.checked;
+    document.getElementById("search-button").addEventListener("click", () => this.onSearch());
+    document.getElementById("filter").addEventListener('click', () => this.view.toggleRecipePanel());
+    document.getElementById("favorites-button").addEventListener("click", () => this.addFavorite());
+    const toggleDynamiqueSearch = document.getElementById("cbx-51");
+    toggleDynamiqueSearch.addEventListener("change", () => {
+      this.dynamiqueSeach = toggleDynamiqueSearch.checked;
     });
-
-    const inputSearch = document.getElementById("search-input");
-    inputSearch.addEventListener("input", () => this.handleInput());
+    document.getElementById("search-input").addEventListener("input", () => this.handleInput());
   }
 
+  // Handles real-time input changes for dynamic search and toggles favorite button.
   handleInput() {
     const query = this.view.getInputValue();
     this.toggleFavoriteButtonState(query);
     this.view.toggleFavoriteStar(this.model.isFavorite(query));
-    if (this.rechercheDynamiqueActive && query.length >= 3) {
+    if (this.dynamiqueSeach && query.length >= 3) {
       this.onSearch();
     } else {
       this.view.clearResults();
     }
   }
 
+  // Initiates the search process by fetching recipes based on input query.
   async onSearch() {
     const query = this.view.getInputValue();
     if (query.length >= 3) {
@@ -50,6 +44,7 @@ class RecipeController {
     }
   }
   
+  // Adds or removes a recipe from favorites and updates UI accordingly.
   async addFavorite() {
     const query = this.view.getInputValue();
     if (query.length >= 3) {
@@ -60,6 +55,7 @@ class RecipeController {
     }
   }
 
+  // Toggles the enabled state of the favorite button based on query length.
   toggleFavoriteButtonState(query) {
     const favBtn = document.getElementById("favorites-button");
     favBtn.disabled = query.length < 3;
