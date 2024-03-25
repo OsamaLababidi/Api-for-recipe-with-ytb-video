@@ -178,6 +178,7 @@ header {
   padding: 12px; /* Espacement à l'intérieur de chaque résultat */
   color: var(--text-color);
   transition: transform 0.2s, box-shadow 0.2s; /* Animation subtile pour hover */
+  cursor: pointer;
 }
 
 #block-results p:hover {
