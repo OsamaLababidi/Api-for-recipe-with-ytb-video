@@ -180,7 +180,7 @@ class RecipeView {
     const savedRecipes = this.model.getSavedRecipesFromSession();
     if (savedRecipes.length === 0) {
       const noSavedRecipesMessage = document.createElement("p");
-      noSavedRecipesMessage.textContent = "No recipes saved.";
+      noSavedRecipesMessage.textContent = "Pas de recette sauvegarder.";
       this.recipePanel.appendChild(noSavedRecipesMessage);
       return;
     }

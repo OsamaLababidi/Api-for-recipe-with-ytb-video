@@ -1,10 +1,10 @@
 /* Importation de la police Roboto */
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-/* Définition des principales couleurs */
+/* Defines a set of custom properties (CSS variables) for colors used throughout the site. */
 :root {
-  --text-color: #fafafa; /* (Texte presque blanc) */
-  --background: #4C4C4C; /* (Fond bleu foncé) */
+  --text-color: #fafafa;
+  --background: #4C4C4C; 
   --background-button: #bebebe;
   --main-green: rgb(26, 188, 156);
   --active-green: rgb(20, 156, 128);
@@ -15,13 +15,14 @@
   color: var(--almost-black);
 }
 
+/* Sets the background, font, and removes default margin and padding for the body. */
 body {
   background-size: cover;
   font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
-
+/* Custom scrollbar styling for the body to improve aesthetics. */
 body::-webkit-scrollbar {
   width: 10px;
 }
@@ -41,8 +42,9 @@ body::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
 
+/* Styles the header with a semi-transparent background and centers its content. */
 header {
-  background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir pour le texte */
+  background: rgba(0, 0, 0, 0.7);
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -59,20 +61,20 @@ header {
   margin-bottom: 20px;
   color: var(--text-color);
 }
-
+/* Creates a flex container for main content, allowing for a responsive layout. */
 #container {
   display: flex;
-  justify-content: space-between; /* Espacement entre les sections */
+  justify-content: space-between; 
   flex-wrap: wrap;
   padding: 20px;
 }
 
 #search-section {
-  flex: 70%; /* Prend 70% de l'espace disponible */
-  margin-right: 2%; /* Petit espace entre les sections */
+  flex: 70%; 
+  margin-right: 2%; 
 }
 #search-block, #section-favorites {
-  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent blanc pour les sections */
+  background: rgba(255, 255, 255, 0.8); 
   margin: 10px;
   padding: 20px;
   border-radius: 8px;
@@ -114,88 +116,86 @@ header {
 #search-button:hover, #favorites-button:hover, #filter:hover {
   background-color: var(--active-green);
 }
-/* Styles de base pour le panneau de recettes */
+/* Styles and hover effects for the recipe panel and its elements. */
 #recipe-panel {
-  background-color: #f8f9fa; /* Un arrière-plan plus clair */
-  border-right: 2px solid #dee2e6; /* Ajoute une bordure pour le séparer du contenu */
-  padding: 20px; /* Ajoute un peu d'espace autour du contenu intérieur */
-  box-shadow: -2px 0 5px rgba(0,0,0,0.1); /* Ajoute une ombre douce pour un effet de profondeur */
+  background-color: #f8f9fa;
+  border-right: 2px solid #dee2e6; 
+  padding: 20px; 
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
 }
 
 #recipe-panel p {
-  margin: 10px 0; /* Espacement entre les éléments */
-  padding: 10px; /* Espacement intérieur */
-  border-radius: 5px; /* Bords arrondis pour les éléments */
-  transition: background-color 0.3s, transform 0.3s; /* Transition douce pour les changements de fond et de transform */
+  margin: 10px 0; 
+  padding: 10px; 
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s; 
 }
 
-/* Styles pour le survol des éléments */
 #recipe-panel p:hover {
-  background-color: #e9ecef; /* Change l'arrière-plan lors du survol */
-  transform: translateX(10px); /* Déplace légèrement l'élément vers la droite */
-  cursor: pointer; /* Change le curseur pour indiquer que l'élément est cliquable */
+  background-color: #e9ecef;
+  transform: translateX(10px);
+  cursor: pointer;
 }
 
-/* Styles pour le bouton de fermeture et autres éléments interactifs */
+/* Styles for the close button and bookmark icon, including hover effects. */
 .close-popup-btn {
-  cursor: pointer; /* Indique que le bouton est cliquable */
+  cursor: pointer; 
   background-color: transparent;
   border: none;
   font-size: 18px;
-  color: #495057; /* Couleur plus douce pour le texte */
+  color: #495057; 
 }
 
 .close-popup-btn:hover {
-  color: #000; /* Assombrir le texte au survol */
+  color: #000; 
 }
 
 .bookmark-icon {
-  transition: transform 0.2s; /* Animation rapide pour l'icône */
+  transition: transform 0.2s; 
 }
 
 .bookmark-icon:hover {
-  transform: scale(1.1); /* Agrandit l'icône au survol */
+  transform: scale(1.1);
 }
 
-/* Ajout de styles pour l'image et la vidéo pour s'assurer qu'ils sont bien présentés */
 .popup-img, #youtube-video-container iframe {
-  max-width: 100%; /* S'assure que l'image/la vidéo ne dépasse pas le container */
-  border-radius: 5px; /* Bords arrondis pour l'image/la vidéo */
+  max-width: 100%; 
+  border-radius: 5px;
 }
 
-
+/* Styles for the results block, including individual results, headings, and descriptions. */
 #block-results, #list-favorite {
-  background: #fff; /* Fond blanc pour les résultats */
+  background: #fff;
   border-radius: 4px;
   padding: 10px;
 }
 
 #block-results p {
-  background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir pour le texte */
-  border-radius: 8px; /* Bords arrondis pour un look moderne */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombre subtile pour un effet de profondeur */
-  margin-bottom: 16px; /* Espacement entre chaque résultat */
-  padding: 12px; /* Espacement à l'intérieur de chaque résultat */
+  background: rgba(0, 0, 0, 0.7); 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  margin-bottom: 16px; 
+  padding: 12px; 
   color: var(--text-color);
-  transition: transform 0.2s, box-shadow 0.2s; /* Animation subtile pour hover */
+  transition: transform 0.2s, box-shadow 0.2s; 
   cursor: pointer;
 }
 
 #block-results p:hover {
-  transform: translateY(-2px); /* Léger déplacement vers le haut au survol */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Ombre plus prononcée pour l'effet au survol */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 #block-results h3 {
-  color: var(--main-green); /* Titre de la recette en vert */
+  color: var(--main-green); 
   margin-top: 0;
 }
 
 #block-results .recipe-description {
-  font-size: 0.9rem; /* Taille de police plus petite pour la description */
-  color: var(--text-color); /* Couleur de texte général pour la description */
+  font-size: 0.9rem;
+  color: var(--text-color); 
 }
-
+/* Styles for the list of favorite searches, including hover effects. */
 #list-favorite li {
   cursor: pointer;
   margin: 5px 0;
@@ -249,6 +249,9 @@ header {
   align-items: center;
   padding: 20px;
 }
+
+/* Additional styles for elements like the popup for recipes, including the scrollbar within it. */
+
 #recipe-popup::-webkit-scrollbar {
   border-radius: 0 5px;
   width: 10px;
@@ -270,27 +273,47 @@ header {
   background: #555; 
 }
 
+#recipe-panel::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#recipe-panel::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+#recipe-panel::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+#recipe-panel::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* Additional hover effects and styles for various elements like the close button, dynamic search block, and custom toggle switch. */
+
 .close-popup-btn{
-  margin-bottom: 20px; /* Espacement du contenu en dessous */
+  margin-bottom: 20px;
   width: 50px;
   border: none;
   background-color: var(--background-button);
-  transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition for smooth animation */
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .close-popup-btn:hover {
-  transform: scale(1.1); /* Increase the size slightly when hovered */
-  background-color: white; /* Change background color on hover */
-  color: black; /* Change text color on hover */
-  cursor: pointer; /* Change cursor to pointer on hover */
+  transform: scale(1.1); 
+  background-color: white; 
+  color: black; 
+  cursor: pointer; 
 }
 
-/* Positionnement fixe en haut de la page */
-#bloc-recherche-dynamique {
+ #bloc-recherche-dynamique {
   position: fixed;
-  top: 20px; /* Ajustez la position verticale */
-  left: 20px; /* Ajustez la position horizontale */
-  z-index: 100; /* Assurez-vous qu'il reste au-dessus des autres éléments */
+  top: 20px; 
+  left: 20px; 
+  z-index: 100; 
 }
 
 #toggle-wrapper{
@@ -347,11 +370,11 @@ header {
 
 .popup-header {
   display: flex;
-  width: 100%; /* Utilisation de toute la largeur de la popup */
-  justify-content: space-between; /* Espacement entre l'image et la vidéo */
-  margin-bottom: 20px; /* Espacement avec le contenu en dessous */
+  width: 100%; 
+  justify-content: space-between;
+  margin-bottom: 20px; 
 }
-
+/* Adjustments for media content (images, videos) to ensure they fit well within their containers. */
 .popup-img, .popup-video iframe {
   width: 48%;
   aspect-ratio: 16 / 9; 
@@ -359,21 +382,21 @@ header {
 }
 
 .popup-content {
-  width: 100%; /* Utilisation de toute la largeur pour le contenu */
+  width: 100%; 
   display: flex;
   flex-direction: column;
-  align-items: center; /* This aligns items horizontally in the case of column flex-direction */
-  justify-content: center; /* This centers the children vertically */
+  align-items: center;
+  justify-content: center;
 }
 
 .popup-ingredients {
-  text-align: left; /* Alignement du texte à gauche pour les ingrédients */
-  width: 100%; /* Utilisation de toute la largeur disponible */
+  text-align: left; 
+  width: 100%; 
   color: var(--text-color);
 }
 
 .popup-ingredients li{
-  margin-bottom: 5px; /* Espacement entre chaque ingrédient */
+  margin-bottom: 5px; 
   color: var(--text-color);
 }
 
@@ -390,7 +413,7 @@ header {
 
 
 
-/* Note that you only needs to edit the config to customize the button! */
+  /* Styling for a custom plus button, including hover and focus effects. */
 
 .plusButton { 
   /* Config start */
@@ -449,19 +472,20 @@ header {
   transform: rotate(180deg);
 }
 
-#plusButton:focus-visible>#plusIcon {
+.plusButton:focus-visible>.plusIcon {
   fill: black;
   transform: rotate(180deg);
 }
-/* Réajustement pour les petits écrans */
+
+/* Responsive adjustments for different screen sizes, ensuring the layout adapts well on smaller screens. */
 @media (max-width: 600px) {
   .popup-header {
-    flex-direction: column; /* Disposition verticale pour l'image et la vidéo sur petits écrans */
+    flex-direction: column; 
   }
 
   .popup-img, .popup-video iframe {
-    width: 100%; /* Utilisation de toute la largeur pour petits écrans */
-    margin-bottom: 20px; /* Espacement entre l'image, la vidéo et le reste du contenu */
+    width: 100%; 
+    margin-bottom: 20px;
   }
 }
 

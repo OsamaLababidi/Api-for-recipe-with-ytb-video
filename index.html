@@ -3,6 +3,7 @@
   <head>
     <title>Recherche de Recettes de Cuisine</title>
     <meta charset="utf-8" />
+    <!-- Link to the favicon for the website. -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon-js.ico" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -18,11 +19,13 @@
         recettes correspondantes et enregistrez vos recherches favorites pour
         les retrouver facilement.
       </p>
+      <!-- Checkbox for enabling/disabling dynamic search. -->
       <div id="checkbox-wrapper-51">
         <input id="cbx-51" type="checkbox" />
         <label for="cbx-51" id="toggle-wrapper">
           <div id="toggle">
             <span>
+              <!-- SVG icon used within the toggle switch. -->
               <svg viewBox="0 0 10 10" height="10px" width="10px">
                 <path
                   d="M5,1 L5,1 C2.790861,1 1,2.790861 1,5 L1,5 C1,7.209139 2.790861,9 5,9 L5,9 C7.209139,9 9,7.209139 9,5 L9,5 C9,2.790861 7.209139,1 5,1 L5,9 L5,1 Z"
@@ -30,32 +33,33 @@
               </svg>
             </span>
           </div>
+          <!-- Label for the dynamic search toggle. -->
           <span id="toggle-label">Recherche dynamique</span>
         </label>
       </div>
     </header>
 
     <main id="container">
-      <!-- Section de recherche (avec résultats) -->
+      <!-- Section dedicated to the search feature and displaying results. -->
       <section id="search-section">
         <div id="search-block">
-          <!-- Champ de recherche -->
+          <!-- Text input for entering search queries. -->
           <input
             type="text"
             id="search-input"
             placeholder="Que cherchez-vous ?"
           />
 
-          <!-- Boutons -->
+          <!-- Buttons for search, favorites, and filter functionalities. -->
           <button
             id="search-button"
             type="button"
             title="Lancer la recherche"
           >
-            <!-- Icone Loupe (provenant de flaticon.com) -->
             <img src="images/loupe.svg" alt="Loupe pour recherche" width="22" />
           </button>
 
+          <!-- Filter button with an SVG icon. -->
           <button
             id="favorites-button"
             type="button"
@@ -64,7 +68,8 @@
           >
             <img src="images/etoile-vide.svg" alt="Etoile vide" width="22" />
           </button>
-          
+
+          <!-- Placeholder for an AJAX loading animation. -->
           <button id="filter" title="filter">
             <svg viewBox="0 0 512 512" height="1em">
               <path
@@ -83,19 +88,19 @@
           />
         </div>
         <div id="block-results">
-          <!-- Les résultats de recherche seront affichés ici par le JavaScript -->
+          <!-- Search results will be displayed here by JavaScript. -->
         </div>
       </section>
 
-      <!-- Section de séparation (avec la bordure verte) -->
+      <!-- Separator section, possibly for stylistic purposes. -->
       <section id="section-separator"></section>
 
-      <!-- Section des recherches favorites -->
+      <!-- Section for displaying and managing favorite searches. -->
       <section id="section-favorites">
         <h2 id="title-favorite">Recherches favorites</h2>
         <p>Cliquez sur une recherche favorite ci-dessous pour la relancer :</p>
         <ul id="list-favorite">
-          <!-- Les recherches favorites seront affichées ici par le JavaScript -->
+        <!-- Favorite searches will be displayed here via JavaScript -->
         </ul>
         <p id="no-results" style="display: none">
           (Aucune recherche favorite)
@@ -103,7 +108,7 @@
       </section>
     </main>
   </body>
-  <!-- Inclusion des scripts JavaScript -->
+  <!-- Inclusion of JavaScript scripts -->
   <script src="js/model/RecipeModel.js" defer></script>
   <script src="js/view/RecipeView.js" defer></script>
   <script src="js/controller/RecipeController.js" defer></script>
