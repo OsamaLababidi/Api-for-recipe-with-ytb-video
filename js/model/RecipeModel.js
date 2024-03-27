@@ -83,34 +83,6 @@ class RecipeModel {
     return this.savedRecipes.some(recipe => recipe.uri === uri);
   }
 
-  updateRecipe(recipe) {
-    // This method would allow for the modification of recipe details.
-    // For example, it could update the recipe's name, ingredients, or instructions
-    // based on some criteria or user input.
-    const index = this.recipes.findIndex(r => r.uri === recipe.uri);
-    if (index !== -1) {
-      // Update the recipe at found index with the new details from 'recipe'
-      this.recipes[index] = {...this.recipes[index], ...recipe};
-      // Optionally, you could re-save the updated recipes list to session or local storage
-      sessionStorage.setItem("recipes", JSON.stringify(this.recipes));
-    } else {
-      console.log("Recipe not found for update.");
-    }
-  }
-  
-  checkForDuplicateRecipes(recipe) {
-    // This method checks if the recipe already exists in the current recipes list
-    // to prevent duplicate entries. It could compare based on a unique identifier,
-    // like a recipe URI or name.
-    const isDuplicate = this.recipes.some(r => r.uri === recipe.uri);
-    if (isDuplicate) {
-      console.log("This recipe is already in the list.");
-      return true; // Indicate that it's a duplicate
-    } else {
-      return false; // Indicate that it's not a duplicate and can be added
-    }
-  }
-  
   isFavorite(query) {
     // Assuming your favorites are stored as an array of queries
     return this.favorites.includes(query);

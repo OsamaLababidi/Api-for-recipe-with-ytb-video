@@ -107,20 +107,19 @@ class RecipeView {
     });
   }
 
-  //Asynchronously fetches and displays a YouTube video related to the recipe within the popup.
-  loadYouTubeVideo(popup, recipe) {
-    this.model
-      .fetchYouTubeVideo(recipe.label)
-      .then((videoUrl) => {
-        if (videoUrl) {
-          const videoContainer = popup.querySelector(
-            "#youtube-video-container"
-          );
-          videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-        }
-      })
-      .catch((error) => console.error("Error loading YouTube video:", error));
+  // Asynchronously fetches and displays a YouTube video related to the recipe within the popup.
+  async loadYouTubeVideo(popup, recipe) {
+    try {
+      const videoUrl = await this.model.fetchYouTubeVideo(recipe.label);
+      if (videoUrl) {
+        const videoContainer = popup.querySelector("#youtube-video-container");
+        videoContainer.innerHTML = `<iframe src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+      }
+    } catch (error) {
+      console.error("Error loading YouTube video:", error);
+    }
   }
+
 
   //Adds a search query to the favorites list if it meets the length requirement. This method integrates with the model to store the favorite and updates the UI accordingly.
   addFavorite(query) {
