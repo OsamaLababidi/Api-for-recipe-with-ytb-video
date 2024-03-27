@@ -131,12 +131,8 @@ class RecipeView {
 
   //Toggles the favorite star icon between filled and empty states based on the isFavorite boolean. This visual cue helps users identify if the current search or recipe is marked as a favorite.
   toggleFavoriteStar(isFavorite) {
-    const starImg = document
-      .getElementById("favorites-button")
-      .querySelector("img");
-    starImg.src = isFavorite
-      ? "images/etoile-pleine.svg"
-      : "images/etoile-vide.svg";
+    const starImg = document.getElementById("favorites-button").querySelector("img");
+    starImg.src = isFavorite ? "images/etoile-pleine.svg": "images/etoile-vide.svg";
   }
 
   //Checks if the current search query is a favorite and updates the favorite button's appearance and functionality based on this status.
