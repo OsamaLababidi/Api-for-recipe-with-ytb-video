@@ -8,10 +8,10 @@ class RecipeModel {
     // Loads saved recipes from session storage, allowing for persistence across sessions.
     this.savedRecipes = this.getSavedRecipesFromSession();
     // API credentials for Edamam's recipe search API.
-    this.APP_ID = "a6a4feb5";
-    this.APP_KEY = "5ab928bb533355a4a7bea5225ec1a715";
+    this.APP_ID = "YOUR_APP_ID";
+    this.APP_KEY = "YOUR_APP_KEY";
     // API key for YouTube Data API v3, used to fetch recipe videos.
-    this.API_KEY_YTB = "AIzaSyAvTBCZDYKDljPbdYUPPM4Uky7S95zpIFg";
+    this.API_KEY_YTB = "YOUR_API_KEY_YTB";
   }
 
   // Asynchronously fetches recipes from the Edamam API based on the user's query.
